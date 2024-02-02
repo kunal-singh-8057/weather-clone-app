@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+    <img src="bg.jpg" alt="" class="m1">
+    <div class="searchbox">
+    <input type="text" class="search" placeholder="serach city" id="search">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+    <h1 id="temperature">22*c</h1>
+    <h2 id="place">Dehradun</h2>
+    <h4 id="humidity">64%</h4>
+    <h5>Humidity</h5>
+    <h5 class="speed" id="speed">Wind speed</h5>
+    <h3 class="amount" id="amount">18Km/h</h3>
+    </header>
+</body>
+<style>
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+header
+{
+    background-color: lightblue;
+    width: 100%;
+    height: 100vh;
+}
+
+.m1
+{
+    height: 75vh;
+    margin-left: 35%;
+    margin-top: 5%;
+}
+
+.search
+{
+    margin-left: 39%;
+    width: 250px;
+    border: 8px solid white;
+    border-radius: 10px;
+   
+}
+
+.searchbox
+{
+    margin-top: -34%;
+    
+}
+
+i
+{
+    color: white;
+    margin-left: 9px;
+}
+
+h1{
+    color: white;
+    margin-left: 39%;
+    margin-top: 10.5%;
+    font-size: 120px;
+}
+
+h2{
+    color: white;
+    margin-left: 43%;
+    font-size: 44px;
+}
+
+h4{
+    color: white;
+    margin-left: 42%;
+    margin-top: 2%;
+    font-size: 50px;
+}
+
+h5
+{
+    color: white;
+    margin-left: 42%;
+   
+}
+
+.speed
+{
+    color: white;
+    margin-left: 58%;
+    margin-top: -1%;
+}
+
+
+.amount
+{
+    color: white;
+    margin-left: 58.5%;
+    margin-top: -4.5%;
+    font-size: 39px;
+}
+
+</style>
+
+
+<script>
+const temperature=document.getElementById('temperature');
+const search = document.getElementById('search');
+const place = document.getElementById('place');
+const humidity = document.getElementById('humidity');
+const speed = document.getElementById('speed');
+const amount = document.getElementById('amount');
+const apikey = "5271e1b4031b8fae6457e94a740540f5";
+const apiurl = "https://api.openweathermap.org/data/2.5/weather?q=dehradun&appid=5271e1b4031b8fae6457e94a740540f5&unit=metric";
+
+function myfun()
+{
+fetch(apiurl+`&appid=$(apikey)`)
+.then(res => res.json())
+.then(data => {
+    temperature.innerHTML=data.main.temp;
+    humidity.innerHTML=data.main.humidity;
+    amount.innerHTML = data.wind.speed;
+    console.log(data);
+    
+})
+}
+
+myfun();
+</script>
+
+
+</html>
